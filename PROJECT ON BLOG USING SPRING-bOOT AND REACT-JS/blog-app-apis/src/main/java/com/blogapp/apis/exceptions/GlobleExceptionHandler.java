@@ -10,6 +10,9 @@ import com.blogapp.apis.payloads.ApiREsponse;
 @RestControllerAdvice
 public class GlobleExceptionHandler {
 	
+	/*
+	 * to handle the Error type of Resource Not Found Error
+	 */
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ApiREsponse> resourceNotFoundExceptionHandler(ResourceNotFoundException ex){
 	

@@ -21,3 +21,35 @@ session -3
 
 create class to handle the Errors name as GlobleExceptionHandler  which handle the exception globlelly
 so all the exception can be handle by here also and it  implemets the method to handle the Resource Not Found Exception so when ever the at client side Resource Not Found Exception is  happed then this method (resourceNotFoundExceptionHandler() ) will we execute than send the response. 
+
+---------------------------------------------------------------------------------
+session-4 ModelMapper dependency
+--------------
+
+	now to convert one object to other object we have create two method dtoTOUser() and userToDto() 	which are converting user object to userDto object and userDto object to user object but for more 	than two and many class or object it is not good to write code to achive it we are configurating 	the dependency of 	ModelMapper jar
+	in pom.xml
+
+for that we have to get it by offical maven website -> https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+
+<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+<dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>3.1.0</version>
+</dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,6 +2,8 @@ package com.blogapp.apis.services.imps;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.blogapp.apis.entities.User;
@@ -15,6 +17,12 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepo userRepo;
+	
+	/*
+	 * for ModelMapper object
+	 */
+	@Autowired
+	private ModelMapper modelmapper;
 	
 	@Override
 	public UserDto createUser(UserDto userDto) {
@@ -84,15 +92,27 @@ public class UserServiceImpl implements UserService {
 	 * 
 	 */
 	private User dtoTOUser(UserDto userDto) {
-		User user  = new User();
-		user.setId(userDto.getId());
-		user.setName(userDto.getName());
-		user.setAbout(userDto.getAbout());
-		user.setEmail(userDto.getEmail());
-		user.setPassword(userDto.getPassword());
-		System.out.println("password at dtoToUser method user.getEmail() :"+user.getPassword());
-		System.out.println("password at dtoToUser method userDto.getEmail() :"+userDto.getPassword());
-		return user;
+		
+		/*
+		 * here we are using the ModelMapper to convert the one object to other for that
+		 * we are using the map(object, classDetals) where
+		 * object-> to map this object 
+		 * classDetalts -> object will be mapped to this class object
+		 */
+		User user_map = this.modelmapper.map(userDto, User.class);
+		System.out.println(user_map.getName());
+//		User user  = new User();
+//		user.setId(userDto.getId());
+//		user.setName(userDto.getName());
+//		user.setAbout(userDto.getAbout());
+//		user.setEmail(userDto.getEmail());
+//		user.setPassword(userDto.getPassword());
+//		System.out.println("password at dtoToUser method user.getEmail() :"+user.getPassword());
+//		System.out.println("password at dtoToUser method userDto.getEmail() :"+userDto.getPassword());
+//		return user;
+		
+		return user_map;
+		
 		
 	}
 	/*create a method to convert the user class to UserDto class
@@ -100,14 +120,9 @@ public class UserServiceImpl implements UserService {
 	 */
 	public UserDto userToDto(User user) {
 		
-		UserDto userDto = new UserDto();
-		userDto.setId(user.getId());
-		userDto.setAbout(user.getAbout());
-		userDto.setEmail(user.getEmail());
-		userDto.setName(user.getName());
-		userDto.setPassword(user.getPassword());
+		UserDto userDto_map = this.modelmapper.map(user, UserDto.class);
 		
-		return userDto;
+		return userDto_map;
 	}
 
 }
