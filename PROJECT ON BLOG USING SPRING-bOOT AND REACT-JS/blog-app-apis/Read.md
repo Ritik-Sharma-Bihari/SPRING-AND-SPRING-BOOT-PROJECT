@@ -15,3 +15,9 @@ before create the userModel we have create a following packages to mantains the 
 	
 4)com.blogapp.apis.services.imps --> in this packages we create a class which implemts the services packages interface to implemts its all method and to use the JPA method to performs the business logics here.
 
+-----------------------------------------------------------------
+session -3 
+-------------
+
+create class to handle the Errors name as GlobleExceptionHandler  which handle the exception globlelly
+so all the exception can be handle by here also and it  implemets the method to handle the Resource Not Found Exception so when ever the at client side Resource Not Found Exception is  happed then this method (resourceNotFoundExceptionHandler() ) will we execute than send the response. 
