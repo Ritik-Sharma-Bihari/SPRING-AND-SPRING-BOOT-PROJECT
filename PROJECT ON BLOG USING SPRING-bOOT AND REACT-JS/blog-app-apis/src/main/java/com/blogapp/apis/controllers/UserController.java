@@ -1,14 +1,22 @@
 package com.blogapp.apis.controllers;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blogapp.apis.payloads.ApiREsponse;
 import com.blogapp.apis.payloads.UserDto;
 import com.blogapp.apis.services.UserService;
 
@@ -26,11 +34,11 @@ public class UserController {
 	}
 	/*
 	 * here we are using the UserDto to transfere the data beacuse 
-	 * to security perpuse we are not using the user class directly
+	 * to security purpuse we are not using the user class directly
 	 * for that we had created two method to chang the data form 
 	 * userDto class to user class
 	 */
-	@PostMapping("/user")
+	@PostMapping("/createUser")
 	public ResponseEntity<UserDto> creatUser(@RequestBody UserDto userDto){
 		
 		UserDto created_User = this.userService.createUser(userDto);
@@ -40,8 +48,39 @@ public class UserController {
 	}
 	// put- for update a user
 	
-	// delete - for delete a user
+	@PutMapping("/updateUser/{id}")
+	public ResponseEntity<UserDto> UpdateUser(@RequestBody UserDto userDto,@PathVariable("id") int id){
+		
+		UserDto updateUser = this.userService.updateUser(userDto,id );
+		
+		return ResponseEntity.ok(updateUser);
+	}
 	
-	// get - to get a user
+	// delete - for delete a user
+	@DeleteMapping("/DeleteUser/{userId}")
+	public ResponseEntity<ApiREsponse> userDeleteApi(@PathVariable("userId") Integer uid){
+		this.userService.deleteUser(uid);
+		//return new  ResponseEntity(Map.of("message","User deleted successfully"), HttpStatus.OK);
+	return new ResponseEntity<ApiREsponse>(new ApiREsponse("user Deleted successfully", true),HttpStatus.OK);
+	}
+	
+	// get - all the users
+	@GetMapping("/users")
+	public ResponseEntity<List<UserDto>> getAllUsers(){
+		
+		List<UserDto> allUsers = this.userService.getAllUsers();
+	
+	return  ResponseEntity.ok(allUsers);
+	}
+	
+	
+	// get user by id 
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<UserDto> getUser(@PathVariable("userId") Integer userId){
+		
+		  UserDto userById = this.userService.getUserById(userId);
+	
+	return  ResponseEntity.ok(userById);
+	}
 
 }

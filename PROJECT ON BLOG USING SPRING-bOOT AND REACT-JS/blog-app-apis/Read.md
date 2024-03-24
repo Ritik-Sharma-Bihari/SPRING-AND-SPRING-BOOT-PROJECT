@@ -8,7 +8,7 @@ before create the userModel we have create a following packages to mantains the 
 	entities to make the database secure.
 
 2)com.blogapp.apis.repositories -> in this package we create a interface which extends the JPARepository interface which provides
-	more methods to deails with dataabase like - creating tables query method and CURD method and mores..
+	more methods to deails with database like - creating tables query method and CURD method and mores..
 
 3)com.blogapp.apis.services -> it will store the a interface which extends the repositriy packages interface aso that we can use all the 
 	importans method of JPA by it and it also store some addtional methods of its.
