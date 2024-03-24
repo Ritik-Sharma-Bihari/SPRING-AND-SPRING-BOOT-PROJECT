@@ -39,8 +39,31 @@ for that we have to get it by offical maven website -> https://mvnrepository.com
 </dependency>
 
 
+------------------------------------------------------------------------------------------------------------------------------------
+session-5 validation of data
+---------------
+we are going to validate the data so that data will be stored in well formate for that we are going to do validation at server 	side like- email validation ,number of charecter in name etc.
 
+step1: inject dependecy of the hibernate spring-boot spring-boot-starter-validation
+step-2: use the @Annocation on required files
+step-3: enable the @Annocation by container
+step-4: format the error 
+-----------------
+step-1 
 
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+    <version>2.6.6</version>
+</dependency>
+----------------
+step-2 : apply all the @Annotaion on required fileds on  UserDto.java class of com.blogapp.apis.payloads package.
+step-3: to enable these Annotaion we have to use the @Valid annoation on Container from this method request is comming.
+
+------------------------
+step-4: format the error SMS to display the Error in well format
+to handle the rise exception called MethodArgumentNotValidException by GlobleExceptionHandler class to create a method called 
 
 
 

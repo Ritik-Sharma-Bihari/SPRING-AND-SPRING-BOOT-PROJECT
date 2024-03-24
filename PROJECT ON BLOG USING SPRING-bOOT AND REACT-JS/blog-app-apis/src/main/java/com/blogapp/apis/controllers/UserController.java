@@ -18,6 +18,8 @@ import com.blogapp.apis.payloads.ApiREsponse;
 import com.blogapp.apis.payloads.UserDto;
 import com.blogapp.apis.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -37,7 +39,7 @@ public class UserController {
 	 * userDto class to user class
 	 */
 	@PostMapping("/createUser")
-	public ResponseEntity<UserDto> creatUser(@RequestBody UserDto userDto){
+	public ResponseEntity<UserDto> creatUser( @Valid @RequestBody UserDto userDto){
 		
 		UserDto created_User = this.userService.createUser(userDto);
 		// to send the client SMS
@@ -47,7 +49,7 @@ public class UserController {
 	// put- for update a user
 	
 	@PutMapping("/updateUser/{id}")
-	public ResponseEntity<UserDto> UpdateUser(@RequestBody UserDto userDto,@PathVariable("id") int id){
+	public ResponseEntity<UserDto> UpdateUser( @Valid @RequestBody UserDto userDto,@PathVariable("id") int id){
 		
 		UserDto updateUser = this.userService.updateUser(userDto,id );
 		

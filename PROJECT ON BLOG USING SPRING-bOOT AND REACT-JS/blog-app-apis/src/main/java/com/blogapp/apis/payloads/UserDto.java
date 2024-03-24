@@ -1,5 +1,9 @@
 package com.blogapp.apis.payloads;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,9 +18,23 @@ import lombok.Setter;
 public class UserDto {
 	
 	private int id;
+	/*
+	 * here @NotNull define only for null and @NotEmpty
+	 * define for all either null value and black
+	 */
+	//@NotNull
+	@NotEmpty
+	@Size(min=3, max=100,message="name charecter must be 2 to 100 char!!")
 	private String name;
+	
+	@Email(message="provided Email id not valid !!")
 	private String email;
+	
+	@NotEmpty(message= " password can't be  empty")
+	@Size(min=6,max=50,message="password must be between 6 to 50 char!!")
 	private String password;
+	
+	@NotEmpty(message="plz fill about your selph")
 	private String about;
 	
 
