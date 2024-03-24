@@ -1,0 +1,5 @@
+package com.blogapp.apis.entities;
+
+public class User {
+
+}

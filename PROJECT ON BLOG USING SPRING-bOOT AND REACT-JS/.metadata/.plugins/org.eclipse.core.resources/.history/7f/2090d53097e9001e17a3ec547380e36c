@@ -1,0 +1,5 @@
+package com.blogapp.apis.repositories;
+
+public interface UserRepo {
+
+}

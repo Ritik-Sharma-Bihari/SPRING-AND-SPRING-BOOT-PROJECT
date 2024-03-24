@@ -1,0 +1,5 @@
+package com.blogapp.apis.payloads;
+
+public class UserDto {
+
+}

@@ -1,0 +1,5 @@
+package com.blogapp.apis.services;
+
+public interface UserService {
+
+}
