@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.blogapp.apis.entities.Category;
 import com.blogapp.apis.entities.Post;
@@ -115,13 +118,36 @@ public class PostServiceImpl implements PostService {
 	 */
 
 	@Override
-	public List<PostDto> getAllPost() {
-		// TODO Auto-generated method stub
-		List<Post> allPost = this.postRepo.findAll();
+	public List<PostDto> getAllPost(Integer pageNumber, Integer pageSize) {	
+		
+		/*
+		 * 		In your 'PostServiceImpl' class, you are creating a 'Pageable' object 'p' and passing it to the
+				`findA11() ' method of your 'PostRepo' with 'pageNumber' and 'pageSize'. However, the
+				'pageNumber' in 'PageRequest' is zero-based, meaning the first page is '0', not '1'. Therefore,
+				when you pass 'pageNumber = 1', it will actually retrieve the second page.
+				
+				To fix this issue and retrieve the first page when `pageNumber = 1', you need to subtract '1' from
+				the 'pageNumber' when creating the 'PageRequest'. Here's how you can fix it:
+		 */
+		int adjustedPageNumber = pageNumber - 1;
+	    
+		/* creating object of Pageable interface
+		 * Pageable -> Abstract interface for pagination information.
+		 * PageRequest-> Basic Java Bean implementation of Pageable.
+		 */
+	    Pageable pageable = PageRequest.of(adjustedPageNumber, pageSize);
+	    
+		// to get the all pages post
+		Page<Post> pageofPost = this.postRepo.findAll(pageable);
+		
+		// to get all post
+		List<Post> Allcontent = pageofPost.getContent();
+		
+		//List<Post> allPost = this.postRepo.findAll();
 		/*
 		 * converting the Post object data to PostDto object data by following
 		 */
-		List<PostDto> CategoryDtos = allPost.stream().map((posts)->this.modelMapper.map(posts, PostDto.class))
+		List<PostDto> CategoryDtos = Allcontent.stream().map((posts)->this.modelMapper.map(posts, PostDto.class))
 				.collect(Collectors.toList());
 		return CategoryDtos;
 	}

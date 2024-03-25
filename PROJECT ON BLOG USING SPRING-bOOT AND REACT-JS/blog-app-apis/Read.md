@@ -86,8 +86,19 @@ step-4: create interface PostService.java
 step-5: create class PostServiceImpl.java
 step-6: create PostController.java
 
+----------------------------------------------------------------------------------------------------------------
+session-8 Implement Pagination in very simple ways in API
+-------------------------------
 
+here we are going to apply the Pagination to filter the pages
 
+	In your 'PostServiceImpl' class, you are creating a 'Pageable' object 'p' and passing it to the
+	`findA11() ' method of your 'PostRepo' with 'pageNumber' and 'pageSize'. However, the
+	'pageNumber' in 'PageRequest' is zero-based, meaning the first page is '0', not '1'. Therefore,
+	when you pass 'pageNumber = 1', it will actually retrieve the second page.
+	To fix this issue and retrieve the first page when `pageNumber = 1', you need to subtract '1' from
+	the 'pageNumber' when creating the 'PageRequest'. Here's how you can fix it:
+			 
 
 
 

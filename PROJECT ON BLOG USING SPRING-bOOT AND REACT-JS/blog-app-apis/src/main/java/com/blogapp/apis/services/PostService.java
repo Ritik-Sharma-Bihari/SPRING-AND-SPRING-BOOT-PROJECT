@@ -13,8 +13,10 @@ public interface PostService {
 	public void DeletePost(Integer post_id);
 	//get a single post
 	public PostDto getPost(Integer post_id);
+	
 	// get all post
-	public List<PostDto> getAllPost();
+	//public List<PostDto> getAllPost();
+	public List<PostDto> getAllPost(Integer pageNumber, Integer pageSize);
 	
 	//get all posts by category
 	public List<PostDto> getPostsByCategory(Integer category_id);
