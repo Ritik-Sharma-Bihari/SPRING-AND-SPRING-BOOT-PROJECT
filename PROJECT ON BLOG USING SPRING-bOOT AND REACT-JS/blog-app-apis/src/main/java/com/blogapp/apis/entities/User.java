@@ -1,5 +1,8 @@
 package com.blogapp.apis.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +23,10 @@ public class User {
 	private String password;
 	private String about;
 	
-	
+	/*
+	 * to maintain the mapping between post, user nad category
+	 */
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Post> posts = new ArrayList<Post>();
 
 }
