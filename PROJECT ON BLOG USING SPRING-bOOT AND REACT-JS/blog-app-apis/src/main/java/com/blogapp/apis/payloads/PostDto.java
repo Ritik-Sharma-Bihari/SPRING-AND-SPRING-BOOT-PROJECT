@@ -1,7 +1,6 @@
 package com.blogapp.apis.payloads;
 
 import java.util.Date;
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -13,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class PostDto {
 	
-private int post_id;
+	private int post_id;
 
 	@NotEmpty(message="plz enter a title for post")
 	private String post_title;
@@ -23,9 +22,13 @@ private int post_id;
 	private String post_content;
 	
 	@NotEmpty(message="plz fill the image section")
-	private String post_images;
+	private String post_images = "default.png" ;
 	
-	@NotEmpty(message="plz put the date of post")
 	private Date addedDate;
+	/*
+	 * to handle the mapping
+	 */
+	private UserDto user;
+	private CategoryDto category;
 
 }

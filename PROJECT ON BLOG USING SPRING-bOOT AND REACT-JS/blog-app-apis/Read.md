@@ -78,7 +78,13 @@ step-6: create CategoryController.java
 
 -------------------------------------------------------------------------------------------------------------------
 session-7 Creating Post class entity and Relationship between post , user and Category to maintain the join concept
-
+---------------------------------------
+step-1: create class entity Post.java
+step-2: create class PostDto.java
+step-3: create interface PostRepo.java
+step-4: create interface PostService.java
+step-5: create class PostServiceImpl.java
+step-6: create PostController.java
 
 
 
