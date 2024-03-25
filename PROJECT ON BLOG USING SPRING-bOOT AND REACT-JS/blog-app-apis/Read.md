@@ -66,7 +66,15 @@ step-4: format the error SMS to display the Error in well format
 to handle the rise exception called MethodArgumentNotValidException by GlobleExceptionHandler class to create a method called 
 
 
-
+----------------------------------------------------------------------------------------------------------------------------------
+session-6 creating the Category APIS
+----------------------
+step-1: create class entity User.java
+step-2: create class CategoryDto.java
+step-3: create interface CategoryRepo.java
+step-4: create interface CategoryService.java
+step-5: create class CategoryServiceImpl.java
+step-6: create CategoryController.java
 
 
 

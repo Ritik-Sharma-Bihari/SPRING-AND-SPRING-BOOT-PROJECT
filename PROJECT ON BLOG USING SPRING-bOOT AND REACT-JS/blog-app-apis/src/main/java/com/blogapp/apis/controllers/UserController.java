@@ -33,9 +33,9 @@ public class UserController {
 		return "hello ritik sharma";
 	}
 	/*
-	 * here we are using the UserDto to transfere the data beacuse 
+	 * here we are using the UserDto to transfere the data beacuses 
 	 * to security purpuse we are not using the user class directly
-	 * for that we had created two method to chang the data form 
+	 * for that we had created two method to change the data form 
 	 * userDto class to user class
 	 */
 	@PostMapping("/createUser")
