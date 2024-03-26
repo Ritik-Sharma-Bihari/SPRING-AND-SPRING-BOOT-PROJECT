@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.blogapp.apis.payloads.ApiREsponse;
 import com.blogapp.apis.payloads.PostDto;
+import com.blogapp.apis.payloads.PostResponse;
 import com.blogapp.apis.services.PostService;
 import jakarta.validation.Valid;
 
@@ -61,14 +62,15 @@ public class PostController {
 	
 	//GET-API (GET ALL DATA)
 	@GetMapping("/posts")
-	public ResponseEntity<List<PostDto>> getAllPost(
-			@RequestParam(value="pageNumber",defaultValue="1",required=false) Integer pageNumber,
+	public ResponseEntity<PostResponse> getAllPost(
+			@RequestParam(value="pageNumber",defaultValue="0",required=false) Integer pageNumber,
 			@RequestParam(value="pageSize",defaultValue="3",required=false) Integer pageSize
 			){
 		
-		 List<PostDto> allPost = this.postService.getAllPost(pageNumber,pageSize);
+		// List<PostDto> allPost = this.postService.getAllPost(pageNumber,pageSize);
+		PostResponse allPost = this.postService.getAllPost(pageNumber,pageSize);
 		
-		return new ResponseEntity<List<PostDto>>(allPost, HttpStatus.OK) ;
+		return new ResponseEntity<PostResponse>(allPost, HttpStatus.OK) ;
 		
 		
 	}

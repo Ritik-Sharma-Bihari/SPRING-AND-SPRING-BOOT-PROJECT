@@ -14,6 +14,7 @@ import com.blogapp.apis.entities.Post;
 import com.blogapp.apis.entities.User;
 import com.blogapp.apis.exceptions.ResourceNotFoundException;
 import com.blogapp.apis.payloads.PostDto;
+import com.blogapp.apis.payloads.PostResponse;
 import com.blogapp.apis.repositories.*;
 import com.blogapp.apis.repositories.UserRepo;
 import com.blogapp.apis.services.PostService;
@@ -118,24 +119,13 @@ public class PostServiceImpl implements PostService {
 	 */
 
 	@Override
-	public List<PostDto> getAllPost(Integer pageNumber, Integer pageSize) {	
+	public PostResponse getAllPost(Integer pageNumber, Integer pageSize) {	
 		
-		/*
-		 * 		In your 'PostServiceImpl' class, you are creating a 'Pageable' object 'p' and passing it to the
-				`findA11() ' method of your 'PostRepo' with 'pageNumber' and 'pageSize'. However, the
-				'pageNumber' in 'PageRequest' is zero-based, meaning the first page is '0', not '1'. Therefore,
-				when you pass 'pageNumber = 1', it will actually retrieve the second page.
-				
-				To fix this issue and retrieve the first page when `pageNumber = 1', you need to subtract '1' from
-				the 'pageNumber' when creating the 'PageRequest'. Here's how you can fix it:
-		 */
-		int adjustedPageNumber = pageNumber - 1;
-	    
 		/* creating object of Pageable interface
 		 * Pageable -> Abstract interface for pagination information.
 		 * PageRequest-> Basic Java Bean implementation of Pageable.
 		 */
-	    Pageable pageable = PageRequest.of(adjustedPageNumber, pageSize);
+	    Pageable pageable = PageRequest.of(pageNumber, pageSize);
 	    
 		// to get the all pages post
 		Page<Post> pageofPost = this.postRepo.findAll(pageable);
@@ -149,7 +139,18 @@ public class PostServiceImpl implements PostService {
 		 */
 		List<PostDto> CategoryDtos = Allcontent.stream().map((posts)->this.modelMapper.map(posts, PostDto.class))
 				.collect(Collectors.toList());
-		return CategoryDtos;
+		/*
+		 * creating object for PostResponse and setting the data to it.
+		 */
+		PostResponse postResponse = new PostResponse();
+		postResponse.setContent(CategoryDtos);
+		postResponse.setPageNumbers(pageofPost.getNumber());
+		postResponse.setPageSize(pageofPost.getSize());
+		postResponse.setTotalElements(pageofPost.getTotalElements());
+		postResponse.setTotalPages(pageofPost.getTotalPages());
+		postResponse.setLastPages(pageofPost.isLast());
+		
+		return postResponse;
 	}
 	
 	/*

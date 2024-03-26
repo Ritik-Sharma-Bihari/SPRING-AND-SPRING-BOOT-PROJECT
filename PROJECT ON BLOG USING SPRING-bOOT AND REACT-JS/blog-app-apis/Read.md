@@ -99,7 +99,22 @@ here we are going to apply the Pagination to filter the pages
 	To fix this issue and retrieve the first page when `pageNumber = 1', you need to subtract '1' from
 	the 'pageNumber' when creating the 'PageRequest'. Here's how you can fix it:
 			 
+to overcome the above we have to set the value of pageNumber 0 not 1 in container.
+
+----------------------------------------------------------------------------------------------------------------------
+session-9 Modifying Post Response in POST API | Its very important for creating API 
+------------------------------------
+to modify the Post API response we are creating a class called PostResponse which hold the content fileds  and some more
+to send the data in more easy ways.so that we can apply the sorting and pagination 
+after creating this class we have to change the return types of getAllPost() from PostServiceImpl class to PostResponse and implements code to return the PostResponse data and also change the return types of ResponseEntity<List<PostDto>>> getAllPost method(handler) of PostController to ResponseEntity<PostResponse> getAllPost . and implements the code.
+
+after change this all run and test and also apply this one to two more method of PostService on 
+1)List<PostDto> getPostsByCategory(Integer category_id); . 2)List<PostDto> getPostsByUser(Integer user_id);
+
+apply it also on getallpost by users and category.
 
 
 
+--------------------------------------------------------------------------------
+session-10 
 
