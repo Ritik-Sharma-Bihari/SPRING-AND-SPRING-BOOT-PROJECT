@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.blogapp.apis.entities.Category;
 import com.blogapp.apis.entities.Post;
@@ -48,7 +49,8 @@ public class PostServiceImpl implements PostService {
 		
 		Post post_mapped = this.modelMapper.map(postDto, Post.class);
 		
-		post_mapped.setPost_images("default.png");
+		//post_mapped.setPost_images("default.png");
+		post_mapped.setPostImages("default.png");
 		post_mapped.setAddedDate(new Date());
 		post_mapped.setUser(userObject);
 		post_mapped.setCategory(categoryObject);
@@ -77,9 +79,9 @@ public class PostServiceImpl implements PostService {
 		/*
 		 * setting new data
 		 */
-		oldPostData.setPost_images(postDto.getPost_images());
-		oldPostData.setPost_title(postDto.getPost_title());
-		oldPostData.setPost_content(postDto.getPost_content());
+		oldPostData.setPostImages(postDto.getPostImages());
+		oldPostData.setPostTitle(postDto.getPostTitle());
+		oldPostData.setPostContent(postDto.getPostContent());
 		/*
 		 * saving the updated data to database
 		 */
@@ -119,14 +121,35 @@ public class PostServiceImpl implements PostService {
 	 */
 
 	@Override
-	public PostResponse getAllPost(Integer pageNumber, Integer pageSize) {	
+	public PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy,String sortDir) {	
+
+	    //Pageable pageable = PageRequest.of(pageNumber, pageSize);
 		
-		/* creating object of Pageable interface
-		 * Pageable -> Abstract interface for pagination information.
-		 * PageRequest-> Basic Java Bean implementation of Pageable.
+		/*
+		 * by default it will sort the data in Ascending order  by either postId, postContent, and postTitle.
 		 */
-	    Pageable pageable = PageRequest.of(pageNumber, pageSize);
+		
+		//PageRequest pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
+		
+		/*
+	     * to display the sort data in descending order
+	     */
+		//PageRequest pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy).descending());
 	    
+	/*
+	* to display the sort daynemically based on user provide for that
+	*/
+		Sort sort = null;
+		if(sortDir.equalsIgnoreCase("asc")) {
+			sort = Sort.by(sortBy).ascending();
+		}else {
+			sort = Sort.by(sortBy).descending();
+		}
+		/*
+	     * to display the sort data in given(either descending or asending) order
+	     */
+		PageRequest pageable = PageRequest.of(pageNumber, pageSize, sort);
+		
 		// to get the all pages post
 		Page<Post> pageofPost = this.postRepo.findAll(pageable);
 		
@@ -210,6 +233,7 @@ public class PostServiceImpl implements PostService {
 
 	
 
+	
 	
 
 }

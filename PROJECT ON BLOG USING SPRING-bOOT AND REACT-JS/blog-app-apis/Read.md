@@ -115,6 +115,56 @@ apply it also on getallpost by users and category.
 
 
 
---------------------------------------------------------------------------------
-session-10 
+-------------------------------------------------------------------------------------------------------------
+session-10 Implementing Sorting in Blogging Application in Spring Boot 
+---------------------------------
+for the sorting we have to implements one more arguments to List<PostDto> getAllPost(Integer pageNumber, Integer pageSize);
+based on sorting parameters
+
+1)public PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy); ---> to sort the data by either postId, postContent and postTitle 
+
+
+2)public PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy,String sortDir); --> to sort the data by either desc order or asc order 
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

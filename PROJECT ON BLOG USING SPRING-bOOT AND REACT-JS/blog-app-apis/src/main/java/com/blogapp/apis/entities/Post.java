@@ -21,14 +21,17 @@ public class Post {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int post_id;
+	@Column(name="post_id")
+	private int postId;
 	
-	private String post_title;
+	@Column(name="post_title")
+	private String postTitle;
 	
-	@Column(length=1000)
-	private String post_content;
+	@Column(length=1000, name="post_content")
+	private String postContent;
 	
-	private String post_images;
+	@Column(name="post_images")
+	private String postImages;
 	
 	private Date addedDate;
 	/*
