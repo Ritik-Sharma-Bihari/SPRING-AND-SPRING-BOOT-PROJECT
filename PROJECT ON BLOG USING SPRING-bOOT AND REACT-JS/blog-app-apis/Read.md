@@ -150,9 +150,23 @@ step-1:creating a class AppConstants in packages-> com.blogapp.apis.config to im
 sep-2: change all the data which is hard-coded from PostController
 
 
+-----------------------------------------------------------------------------------------------------------
+session-13 Working on Post Image in one short | Uploading Image for Post | Serving Post Image
+------------------------------
+here we are going to insert the pics by post and store in directory.
 
+step-1: creating a interface called FileService.java
+step-2: creating a class which implemtns all the methods of FileService interface called FileServiceImpl.java.
+step-3: provides the detalis of MUltitypes data in application.properties 
 
+	like- 
+# this is for image perpose 
+spring.servlet.multipart.max-file-size = 20MB
+spring.servlet.multipart.max-request-size = 20MB
+project.image = image/
 
+step-4: create a handler in PostController.java called ResponseEntity<PostDto> uploadPostImage
+step-5: send the request and check the response.
 
 
 
