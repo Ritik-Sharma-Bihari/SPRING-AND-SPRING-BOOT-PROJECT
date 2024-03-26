@@ -140,6 +140,14 @@ step-3: override the List<PostDto> searchPosts(String keyword); method in PostSe
 
 step-4: create a handler in PostContainer called public ResponseEntity<List<PostDto>> serchPostByTitle to handle the search request.
 
+---------------------------------------------------------------------------------------------------------
+session-12 One Good Practice that makes your project best |
+--------------------------
+we are going to learn that how to remove and maintain the hardcode in your application for that we are create a separate constant for them.
+which make code-reusable, less-code, easy-to-chnage or update etc.
+
+step-1:creating a class AppConstants in packages-> com.blogapp.apis.config to implemts all constanst data
+sep-2: change all the data which is hard-coded from PostController
 
 
 

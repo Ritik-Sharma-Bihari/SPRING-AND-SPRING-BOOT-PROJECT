@@ -23,7 +23,7 @@ public interface PostRepo extends JpaRepository<Post , Integer> {
 	 * we can also create a user method with query for search
 	 */
 	
-	@Query("select p from Post where p.post_title like:key")
-	List<Post>serarchByTitle( @Param("key")String postTitle);
+//	@Query("select post_title from Post where p.post_title like:key")
+//	List<Post>serarchByTitle( @Param("")String postTitle);
 }
 
