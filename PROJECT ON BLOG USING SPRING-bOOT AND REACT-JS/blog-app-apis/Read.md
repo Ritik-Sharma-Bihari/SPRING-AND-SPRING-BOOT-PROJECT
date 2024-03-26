@@ -127,13 +127,18 @@ based on sorting parameters
 2)public PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy,String sortDir); --> to sort the data by either desc order or asc order 
 
 
-
-
 ---
 
+------------------------------------------------------------------------------------------------
+session-11 Implementing Searching in our Backend Application 
+----------------------
+step-1: we are creating a costume jpa method for perfomrms the like query on database called List<Post> findByPostTitleContaining(String postTitle); and here notes that to give the name be careful 
 
+step-2: create a method is PostService interface called List<PostDto> searchPosts(String keyword); to override in its implemented class
 
+step-3: override the List<PostDto> searchPosts(String keyword); method in PostServiceImpl and write the code.
 
+step-4: create a handler in PostContainer called public ResponseEntity<List<PostDto>> serchPostByTitle to handle the search request.
 
 
 

@@ -3,6 +3,8 @@ package com.blogapp.apis.services.imps;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -228,7 +230,13 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostDto> searchPosts(String keyword) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Post> byTitleContaining = this.postRepo.findByPostTitleContaining(keyword);
+		/*
+		 * conveting post object to postDto
+		 */
+		 List<PostDto> collectList = byTitleContaining.stream().map((posts)->
+		 this.modelMapper.map(posts, PostDto.class)).collect(Collectors.toList());         
+		return collectList;
 	}
 
 	
