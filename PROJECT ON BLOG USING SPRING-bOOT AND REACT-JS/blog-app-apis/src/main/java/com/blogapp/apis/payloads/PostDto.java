@@ -1,6 +1,11 @@
 package com.blogapp.apis.payloads;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.blogapp.apis.entities.Comment;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -33,5 +38,14 @@ public class PostDto {
 	 */
 	private UserDto user;
 	private CategoryDto category;
+	
+	/*
+	 * to get related comments automatically when we call the Post
+	 */
+	private Set<CommentDto> comments = new HashSet<>();
+	
+	
+	
+	
 
 }

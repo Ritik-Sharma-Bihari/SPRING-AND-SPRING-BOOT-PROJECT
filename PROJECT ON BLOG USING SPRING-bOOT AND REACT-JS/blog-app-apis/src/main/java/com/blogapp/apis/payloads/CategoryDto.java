@@ -1,5 +1,8 @@
 package com.blogapp.apis.payloads;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +21,10 @@ public class CategoryDto {
 	
 	@NotEmpty(message="plz enter a description for category")
 	private String category_description;
+	
+	/*
+	 * to get related comments automatically when we call the Post
+	 */
+	private Set<CommentDto> comments = new HashSet<>();
 
 }

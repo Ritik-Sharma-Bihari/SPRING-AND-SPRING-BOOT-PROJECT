@@ -1,7 +1,9 @@
 package com.blogapp.apis.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,9 +26,15 @@ public class User {
 	private String about;
 	
 	/*
-	 * to maintain the mapping between post, user nad category
+	 * to maintain the mapping between post, user and category
 	 */
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Post> posts = new ArrayList<Post>();
+	
+	/*
+	 * joining between many comments for a single user
+	 */
+	@OneToMany(mappedBy="user",cascade= CascadeType.ALL)
+	private Set<Comment> comments = new HashSet<>();
 
 }

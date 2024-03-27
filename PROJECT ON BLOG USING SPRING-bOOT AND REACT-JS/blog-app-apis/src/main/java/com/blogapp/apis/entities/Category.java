@@ -1,7 +1,9 @@
 package com.blogapp.apis.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -33,5 +35,11 @@ public class Category {
 	 */
 	@OneToMany(mappedBy="category",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Post> posts = new ArrayList<Post>();
+	
+	/*
+	 * joining between many comments for a single category
+	 */
+	@OneToMany(mappedBy="category",cascade= CascadeType.ALL)
+	private Set<Comment> comments = new HashSet<>();
 
 }

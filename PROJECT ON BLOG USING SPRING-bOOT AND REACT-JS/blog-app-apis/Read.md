@@ -168,15 +168,29 @@ project.image = image/
 step-4: create a handler in PostController.java called ResponseEntity<PostDto> uploadPostImage
 step-5: send the request and check the response.
 
+-------------------------------------------------------------------------------------------------------------------
+session-14 Complete Comment API in one short using Spring Boot
+-------------------------------
+*** -> have to do
 
+ 1)here we are creating a comment api so comment has relationship between comment(many comment for a single post)
+ 2)create relationship between user and comments where many comments for a single user.
+ 3)create relationship between category and comments where many comments for a single category.
+ 4)to get related comments automatically when we call the Post we are declare a comment.
+ 5)create a commentDto class 
+ 6)creating a CommentRepo interface
+ 7) creating a CommentService interface
+ 8) creating a CommentServiceImpl class
+ 9) creating a CommentContianer class
 
+by above we achive that to get all the post by particular post 
+i have to two more things there setting the comment for particular user and category 
+----------NOTE----------------------
+when ever we are submit the data of comments from url then it properlly taking the post id but then userId and categoryId not taking property to verify it we have to create GUI and then check if also not comming then we will implents the below handle for it in-place of present hander
 
+//@PostMapping("user/{userId}/category/{categoryId}/post/{postId}/createComment")
 
-
-
-
-
-
+and also have to  implements all the CURD operation for comments
 
 
 

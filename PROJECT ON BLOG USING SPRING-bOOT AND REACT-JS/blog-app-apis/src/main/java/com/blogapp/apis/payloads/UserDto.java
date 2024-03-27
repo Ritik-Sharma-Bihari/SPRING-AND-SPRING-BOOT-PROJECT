@@ -1,5 +1,8 @@
 package com.blogapp.apis.payloads;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -38,4 +41,8 @@ public class UserDto {
 	private String about;
 	
 
+	/*
+	 * to get related comments automatically when we call the Post
+	 */
+	private Set<CommentDto> comments = new HashSet<>();
 }
