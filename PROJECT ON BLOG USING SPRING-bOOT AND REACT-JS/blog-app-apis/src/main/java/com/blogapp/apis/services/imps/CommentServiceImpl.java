@@ -61,7 +61,8 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public void DeleteComment(Integer commentId) {
 		// TODO Auto-generated method stub
-		Comment commentTODelete = this.commentRepo.findById(commentId).orElseThrow(()-> new ResourceNotFoundException("comment" , "comment Id",commentId));    
+		Comment commentTODelete = this.commentRepo.findById(commentId).orElseThrow(()-> 
+		new ResourceNotFoundException("comment" , "comment Id",commentId));    
 		this.commentRepo.delete(commentTODelete);
 
 	}

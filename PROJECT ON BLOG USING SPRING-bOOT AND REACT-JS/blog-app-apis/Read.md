@@ -193,7 +193,32 @@ when ever we are submit the data of comments from url then it properlly taking t
 and also have to  implements all the CURD operation for comments
 
 
+------------------------------------------------------------------------------------------------------------------------------------------
+session-15 Securing Rest APIs in Backend Application
+--------------------------------
 
+by this session we are going to includes one feature called spring security so that without login no-one can do any post, edit there post and so on.
+step-1: inject the spring-security dependency in pom.xml
+like-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+step-2: apply the spring-security configure in application.properites 
+like-
+#appy the spring-security configuration details
+logging.level.org.springframework.security=DEBUG
+
+step-3:  configure the spring-security details in application.properties
+here when we inject the spring-security to application and run it then by-default it will create a password which will show in console and if we try to access any resource from follow the url then that will show user unuthentication beacuse spring-security by-default it secure all the resource to access then we have to login the url with respect to user name as user and password as given console
+
+step-4: we can also change the default user name and password by confire it in application.properties 
+like-
+#manege the user detalis
+spring.security.user.name==ritik
+spring.security.user.password=ritik
+spring.security.user.roles=ADMIN
 
 
 
