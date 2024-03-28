@@ -196,6 +196,7 @@ and also have to  implements all the CURD operation for comments
 ------------------------------------------------------------------------------------------------------------------------------------------
 session-15 Securing Rest APIs in Backend Application
 --------------------------------
+here spring-provies the form based authentication features to login and logout for access the resources
 
 by this session we are going to includes one feature called spring security so that without login no-one can do any post, edit there post and so on.
 step-1: inject the spring-security dependency in pom.xml
@@ -220,17 +221,55 @@ spring.security.user.name==ritik
 spring.security.user.password=ritik
 spring.security.user.roles=ADMIN
 
+-------------------------------------------------------------------------------------------------------------------------------
+session-16 Complete Basic Authentication with Database | Securing Rest APIS
+-------------------------------------------------------
+WE KNOW that spring-security provides the form based authentication so we are using the REST apis so we are going to convert in in basic form.
 
+step-1: create a class in package ---> com.blogapp.apis.config called ---> SecurityConfiguration.java
 
+step-2: extend that class the other predefine is WebSecurityConfigurerAdapter , here problem  is that  The WebSecurityConfigurerAdapter class has been deprecated in recent versions of Spring Security.
+Starting from Spring Security 5.7.0-M2, the recommended approach is to configure security using other alternatives, such as SecurityFilterChain. and 
+If you’re using an older version of Spring Security (before 5.7.0-M2), you can find the WebSecurityConfigurerAdapter class in the spring-security-config JAR.
+To include it in your project, add the following Maven or Gradle dependency:
+example- 
 
+<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>5.3.0.RELEASE</version>
+</dependency>
 
+----------------NOTE-----------------------
+the above ways show some error so that we are using the  registering a SecurityFilterChain bean way for that. we need to implements the method as 
+	@Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    	
+    	http.authorizeRequests((authz)->authz
+    			.anyRequest()
+    			.authenticated())
+    	.httpBasic();
+    	return http.build();
+    }
+and test them.
 
+step-3: create a class Role.java entity to store the role details of user and here i user can have many role and also many roles can have many user so the relationship between user and role must be many-to-many.
 
+step-4: give the mapping between this both classes. 
 
+STEP-5: RUN AND check the databases created user_role and role table.
 
+step-6: now remove the details of user from application.properties and create some class which can store them in database.
 
+step-7: create a method in UserRepo.java  for user to identify the user for role
 
+step-8: create a class CustomUserDetailsService.java in a package com.blogapp.apis.security and implements the above method 
 
+step-9: after calling that findBYEmail() method here we have the object type of user but we need to return the types of UserDetails so we need to  implemetns the UserDetails to user class so that we can return the user
 
+step-10: after return the user object we have to authenticate the basic authentication with database so we are create a 
+		  method in SecurityConfiguration class which handle the configure the basic configuration with database in  spring boot using spring security
+
+step-11: after this all we are storing the password in encoding format so create object in main class of spring application
 
 

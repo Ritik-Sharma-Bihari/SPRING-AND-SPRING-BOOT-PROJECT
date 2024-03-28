@@ -1,5 +1,7 @@
 package com.blogapp.apis.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.blogapp.apis.entities.User;
@@ -10,5 +12,10 @@ import com.blogapp.apis.entities.User;
  * operation without writing the SQL queries.
  */
 public interface UserRepo extends JpaRepository<User , Integer> {
+	
+	/*
+	 * create a method for user to identify the user for role
+	 */
+	Optional<User> findByEmail(String email);
 
 }
