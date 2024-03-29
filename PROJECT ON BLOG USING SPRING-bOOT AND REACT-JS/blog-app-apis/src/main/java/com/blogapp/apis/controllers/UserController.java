@@ -26,6 +26,7 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
 	//post - for create a user
 	
 	@GetMapping("/ritik")

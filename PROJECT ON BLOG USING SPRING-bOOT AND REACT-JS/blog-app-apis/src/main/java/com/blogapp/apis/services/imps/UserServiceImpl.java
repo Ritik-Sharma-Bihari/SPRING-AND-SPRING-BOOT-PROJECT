@@ -2,10 +2,12 @@ package com.blogapp.apis.services.imps;
 
 //e89e14be-ad8d-4584-b1e3-4426e4089693
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.blogapp.apis.entities.User;
 import com.blogapp.apis.payloads.UserDto;
@@ -25,6 +27,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private ModelMapper modelmapper;
 	
+	
+	
+	@Autowired
+	private PasswordEncoder  passwordEncorder;
+	
+	
 	@Override
 	public UserDto createUser(UserDto userDto) {
 		// TODO Auto-generated method stub
@@ -33,10 +41,24 @@ public class UserServiceImpl implements UserService {
 		 * convert the userDto data to user and user to userDto
 		 */
 		User user = this.dtoTOUser(userDto);
+		/*
+		 * to set the password in incorder format
+		 */
+		user.setPassword(this.passwordEncorder.encode(user.getPassword()));
+		/*
+		 * to save the user
+		 */
 		User savedUser = this.userRepo.save(user);	
 		System.out.println("password at save time "+user.getPassword());
 		return this.userToDto(savedUser);
+	
 	}
+	
+	/*
+	 * this is for login 
+	 */
+	
+	 
 
 	@Override
 	public UserDto updateUser(UserDto userDto, Integer userId) {

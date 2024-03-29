@@ -10,10 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EnableWebSecurity
-public class BlogAppApisApplication  implements CommandLineRunner{
+public class BlogAppApisApplication {
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BlogAppApisApplication.class, args);
 	}
@@ -30,12 +29,6 @@ public class BlogAppApisApplication  implements CommandLineRunner{
 		return new ModelMapper(); 
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		
-		System.out.println(this.passwordEncoder.encode("ritk1234"));
-		
-	}
+	
 
 }

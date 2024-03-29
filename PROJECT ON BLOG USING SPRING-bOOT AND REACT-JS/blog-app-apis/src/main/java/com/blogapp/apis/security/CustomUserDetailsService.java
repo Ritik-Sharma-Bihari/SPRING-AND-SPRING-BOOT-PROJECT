@@ -23,6 +23,8 @@ public class CustomUserDetailsService implements UserDetailsService{
 		// TODO Auto-generated method stub
 		// loading user from database by username
 		
+		System.out.println("this is CustomUserDetailsService.java");
+		
 		User userObject = this.userRepo.findByEmail(username).orElseThrow(()-> new ResourceNotFoundException("User", "Email", username));
 		/*
 		 * here we have the object type of user but we need to return the types of UserDetails so we need to 

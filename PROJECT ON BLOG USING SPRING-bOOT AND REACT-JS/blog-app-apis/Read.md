@@ -272,4 +272,43 @@ step-10: after return the user object we have to authenticate the basic authenti
 
 step-11: after this all we are storing the password in encoding format so create object in main class of spring application
 
+--------------------------------------------------------------------------------------------------------------------------------------
+session-17 create user and useRepo
+
+step-1: add the dependecy of jwt to pom.xml
+like- 
+<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt</artifactId>
+    <version>0.9.1</version>
+</dependency>
+
+step-2: Create JWT authenticationEntryPoint implements AuthenticationEntryPoint
+
+we are create a class JWT_authenticationEntryPoint in package---> com.blogapp.apis.security ,  which implements the AuthenticationEntryPoint and we are overriding a method called 'commence' for if any un-authentication person try to access the resource then it will throw a error.
+
+step-3: Create JWTTokenHelper
+
+it will inclueds all the method related to token operation like- create token, send token etc. so we are create a class for it JWTTokenHelper 
+
+step-4:  JwtAuthenticationFilter  extends OncePerRequestFilter 
+ we are create a class JwtAuthenticationFilter which extends the OncePerRequestFilter which filter the request just before access the APIS. and overrides the implemtnded method called doFilterInternal  for below operation this method will executed at each and every time for checking the request header.
+              
+a) Get jwt token from request- 
+b) Validate token
+c) Get user from token
+d) Load user associated with token
+e) Set spring security 
+
+
+5. Create JwtAuthResponse- 
+we are create a JwtAuthResponse.java class which has those response which we will send with data.
+
+6. Configure JWT in spring security config---
+we have to configure the jwt to spring security in securityConfig.java class by
+
+
+7. Create login  api to return token
+8. Test the application
 
