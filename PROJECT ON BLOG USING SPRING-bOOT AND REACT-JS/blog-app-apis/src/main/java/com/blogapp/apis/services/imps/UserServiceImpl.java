@@ -9,8 +9,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.blogapp.apis.config.AppConstants;
+import com.blogapp.apis.entities.Role;
 import com.blogapp.apis.entities.User;
 import com.blogapp.apis.payloads.UserDto;
+import com.blogapp.apis.repositories.RoleRepo;
 import com.blogapp.apis.repositories.UserRepo;
 import com.blogapp.apis.services.UserService;
 import com.blogapp.apis.exceptions.ResourceNotFoundException;
@@ -31,6 +35,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private PasswordEncoder  passwordEncorder;
+	
+	@Autowired
+	private RoleRepo roleRepo;
 	
 	
 	@Override
@@ -146,6 +153,28 @@ public class UserServiceImpl implements UserService {
 		UserDto userDto_map = this.modelmapper.map(user, UserDto.class);
 		
 		return userDto_map;
+	}
+
+	@Override
+	public UserDto registerNewUser(UserDto userDto) {
+		// TODO Auto-generated method stub
+		/*
+		 * convert UserDto object to User object
+		 */
+		User user = this.modelmapper.map(userDto, User.class);
+		/*
+		 * to set the password in incorder format
+		 */
+		user.setPassword(this.passwordEncorder.encode(user.getPassword()));
+		
+		// this is for Role
+		Role role = this.roleRepo.findById(AppConstants.NORMAL_USER).get();
+		
+		user.getRoles().add(role);
+		
+		User newUser = this.userRepo.save(user);
+		
+		return this.modelmapper.map(newUser, UserDto.class);
 	}
 
 }

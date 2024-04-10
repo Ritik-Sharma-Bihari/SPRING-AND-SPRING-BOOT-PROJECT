@@ -2,6 +2,7 @@ package com.blogapp.apis.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -49,7 +50,8 @@ public class SecurityConfiguration {
 	        http.csrf(csrf -> csrf.disable())
 	                .authorizeRequests().
 	                requestMatchers("/home").authenticated().requestMatchers("/api/v1/login").permitAll()
-	                .requestMatchers("/api/v1/create-user").permitAll()
+	                .requestMatchers("/api/v1/**").permitAll()
+	                .requestMatchers(HttpMethod.GET).permitAll()
 	                .anyRequest()
 	                .authenticated()
 	                .and().exceptionHandling(ex -> ex.authenticationEntryPoint(point))
