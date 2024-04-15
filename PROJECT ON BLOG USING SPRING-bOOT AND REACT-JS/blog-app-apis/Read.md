@@ -311,4 +311,21 @@ we have to configure the jwt to spring security in securityConfig.java class by
 
 7. Create login  api to return token
 8. Test the application
+---------------------------------------------------------------------------------------------------------
+###
+TO IMPLEMENTS THE SWAGGER 
+-----------------------------------------
+To implments the swagger for our project we need to download or inject the dependecy of swagger by following below maven 
+ex-
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+</dependency>
+
+step-2: after inject the swagger dependency in pom.xml we need to enable the @EnableWebMvc in SecurityConfiguration.java and to implements the
+		all url we need to write the .requestMatchers("/v3/api-docs").permitAll() which is used to access all predefine url with proper description.
+		
+step-3: after implements above steps when we run the code then by following that URL we can see multiples url which are already in that swagger so to implemets our url we need to use array of string and paste all the url in that string array.
 

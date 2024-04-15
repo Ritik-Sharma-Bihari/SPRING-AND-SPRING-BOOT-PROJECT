@@ -1,8 +1,0 @@
-package com.blogapp.apis.exceptions;
-
-public class ResourceNotFoundException extends RuntimeException{
-
-	String resourceName;
-	String fieldName;
-	String fieldValue;
-}

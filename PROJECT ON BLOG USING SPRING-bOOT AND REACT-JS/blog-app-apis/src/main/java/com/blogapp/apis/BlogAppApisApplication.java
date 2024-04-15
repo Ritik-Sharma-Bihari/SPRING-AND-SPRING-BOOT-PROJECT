@@ -14,8 +14,11 @@ import com.blogapp.apis.config.AppConstants;
 import com.blogapp.apis.entities.Role;
 import com.blogapp.apis.repositories.RoleRepo;
 
+
+
 @SpringBootApplication
 @EnableWebSecurity
+
 public class BlogAppApisApplication {
 
 	
