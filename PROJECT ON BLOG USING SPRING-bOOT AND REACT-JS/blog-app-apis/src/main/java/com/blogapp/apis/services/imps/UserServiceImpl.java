@@ -90,12 +90,16 @@ public class UserServiceImpl implements UserService {
 		UserDto userToDto = this.userToDto(updatedUser);
 		return userToDto;
 	}
+	/*
+	 * to get a particular user by id
+	 */
 
 	@Override
 	public UserDto getUserById(Integer userId) {
 		// TODO Auto-generated method stub
 		User userObject = this.userRepo.findById(userId).
 				orElseThrow(()->new ResourceNotFoundException("User" , "id",userId)); 
+        
 		
 		return this.userToDto(userObject);
 	}
