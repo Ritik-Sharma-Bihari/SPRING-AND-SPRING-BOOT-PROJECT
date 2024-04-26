@@ -40,3 +40,7 @@ just write a name of that components then auto import then we have to do followi
 1) we need to download a plaggen called -> ES7+ React/Redux/React-Native snippets
 
 ------------------------------------------------------------
+session-6 Responsive Navbar using React JS  | Blogging Application
+-------------
+1)apply the reactstrap to create the navbar 
+2)

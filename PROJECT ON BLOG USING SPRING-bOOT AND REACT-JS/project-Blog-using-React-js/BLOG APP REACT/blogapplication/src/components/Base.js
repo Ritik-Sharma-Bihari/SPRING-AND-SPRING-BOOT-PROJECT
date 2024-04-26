@@ -1,15 +1,15 @@
+import CustomeNavbar from "./CustomeNavbar"
 const Base = ({ title = "Blog application of VFSTR", children }) => {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid p-0 m-0">
 
-            <h1>this is Header</h1>
 
             {/* this section for dynamic content which is child */}
-
+            <CustomeNavbar />
             {children}
 
             <h1>this is Footer</h1>
-        </div>
+        </div >
 
 
     )
