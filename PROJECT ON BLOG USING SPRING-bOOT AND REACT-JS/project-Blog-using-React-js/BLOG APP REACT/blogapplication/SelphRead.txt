@@ -1,0 +1,42 @@
+-----------------------------------------
+session-3
+1) to set the style of bootstrap in react project by our-selph we have to install the Reactstrap
+step- npm install reactstrap
+2) Include Bootstrap
+    a)npm install --save bootstrap
+    b)import 'bootstrap/dist/css/bootstrap.min.css';
+    c)npm install react-bootstrap
+
+ then run the program
+
+we are create some folder like 
+1)components-> to keep all the components.
+2)pages-> to keep all the pages which must time will come same.
+
+---------------------------------------------------------------------------------------------
+SESSION-4 Setting Up Routing React JS | Blogging Application using React JS
+-- 
+we are going to use the React-Router-Dom for that we need to download it by followiing steps:
+step-1: go to react-route  dom website(https://reactrouter.com/en/main) and 
+step-2:npm install react-router-dom@6 
+                or 
+       npm install react-router-dom localforage match-sorter sort-by
+
+step-3: write the code of all the page folder 
+step-4: solve the problem of AMT beacuse in react the AMT feacture not allowed derectroy.
+=> for this setting goto google and write ==> jsx auto complete
+open the stackoverflow discussion
+Add these below JSON values in the settings.json:
+
+"emmet.includeLanguages": {
+     "javascript": "javascriptreact"
+ },
+ "emmet.syntaxProfiles": {
+     "javascript": "jsx"
+ }
+------------
+Problem-2 if we want to import a conponets the nwe need to write all the code but if you want to 
+just write a name of that components then auto import then we have to do following configuration for it
+1) we need to download a plaggen called -> ES7+ React/Redux/React-Native snippets
+
+------------------------------------------------------------
