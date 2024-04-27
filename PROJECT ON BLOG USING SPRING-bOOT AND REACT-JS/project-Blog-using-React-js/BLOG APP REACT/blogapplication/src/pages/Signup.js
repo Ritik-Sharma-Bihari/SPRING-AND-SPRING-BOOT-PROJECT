@@ -1,8 +1,60 @@
 // this is for signup page file
 import { CardHeader, Card, Container, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
 import Base from "../components/Base";
+import { useEffect, useState } from "react";
 
 const Signup = () => {
+
+    const [data, setData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        about: ''
+    })
+
+    const [error, setError] = useState({
+        error: {},
+        isError: false
+    })
+
+    // define the useEffect to log the data
+
+    // useEffect(() => {
+    //     console.log(data)
+    // }, [data])
+
+    // define the handleangeData function to set the data 
+    const handleChnageData = (event, filedName) => {
+
+        // console.log(event)
+        // console.log(event.target.value)
+        setData({ ...data, [filedName]: event.target.value })
+
+    }
+
+    // to reseting the Form
+    const resetData = () => {
+        console.log("Data has been reset")
+        setData({
+            name: '',
+            email: '',
+            password: '',
+            about: ''
+        })
+    }
+
+    // to submit the form
+
+    const submitForm = (event) => {
+        event.preventDefault()
+
+        console.log(data)
+        // data validation..
+
+        // data send to server by apis
+
+    }
+
     return (
         <Base>
             <Container>
@@ -24,6 +76,8 @@ const Signup = () => {
                                             type="text"
                                             placeholder="Enter name here"
                                             id="name"
+                                            onChange={(e) => handleChnageData(e, 'name')}
+                                            value={data.name}
                                         />
 
                                     </FormGroup>
@@ -35,6 +89,8 @@ const Signup = () => {
                                             type="email"
                                             placeholder="Enter email here"
                                             id="email"
+                                            onChange={(e) => handleChnageData(e, 'email')}
+                                            value={data.email}
                                         />
 
                                     </FormGroup>
@@ -46,6 +102,8 @@ const Signup = () => {
                                             type="password"
                                             placeholder="Enter password here"
                                             id="password"
+                                            onChange={(e) => handleChnageData(e, 'password')}
+                                            value={data.password}
                                         />
 
                                     </FormGroup>
@@ -58,22 +116,31 @@ const Signup = () => {
                                             type="textarea"
                                             placeholder="Enter about here"
                                             id="about"
+                                            onChange={(e) => handleChnageData(e, 'about')}
+                                            value={data.about}
                                         />
 
                                     </FormGroup>
 
                                     <Container className="text-center">
-                                        <Button type="submit" color="dark">Register</Button>
-                                        <Button type="reset" color="secondary" className="ms-2">Reset</Button>
+                                        <Button type="submit" color="dark" onClick={submitForm}>Register</Button>
+                                        <Button type="reset" color="secondary" className="ms-2" onClick={resetData}>Reset</Button>
 
                                     </Container>
 
                                 </Form>
+
+
                             </CardBody>
                         </Card>
+                        <Container>
+                            <Label>Data:{JSON.stringify(data)} </Label>
+
+                        </Container>
                     </Col>
                 </Row>
             </Container>
+
 
         </Base>
 
