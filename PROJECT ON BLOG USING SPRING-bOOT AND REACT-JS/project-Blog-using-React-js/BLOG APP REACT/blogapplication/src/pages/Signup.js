@@ -3,6 +3,9 @@ import { CardHeader, Card, Container, CardBody, Form, FormGroup, Label, Input, B
 import Base from "../components/Base";
 import { useEffect, useState } from "react";
 
+import { signup } from "../services/UserService";
+import { toast } from 'react-toastify'
+
 const Signup = () => {
 
     const [data, setData] = useState({
@@ -52,6 +55,21 @@ const Signup = () => {
         // data validation..
 
         // data send to server by apis
+        signup(data).then((response) => {
+            console.log(response)
+            console.log("success log")
+            toast.success("User Register successfull")
+
+            setData({
+                name: '',
+                email: '',
+                password: '',
+                about: ''
+            })
+        }).catch((error) => {
+            console.log(error)
+            console.log("Error log");
+        })
 
     }
 
@@ -123,8 +141,10 @@ const Signup = () => {
                                     </FormGroup>
 
                                     <Container className="text-center">
-                                        <Button type="submit" color="dark" onClick={submitForm}>Register</Button>
-                                        <Button type="reset" color="secondary" className="ms-2" onClick={resetData}>Reset</Button>
+                                        <Button type="submit" color="dark"
+                                            onClick={submitForm}>Register</Button>
+                                        <Button type="reset" color="secondary" className="ms-2"
+                                            onClick={resetData}>Reset</Button>
 
                                     </Container>
 

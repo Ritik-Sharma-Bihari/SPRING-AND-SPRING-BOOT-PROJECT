@@ -8,11 +8,14 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Service from './pages/Services'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   return (
 
     <BrowserRouter>
+      <ToastContainer position='bottom-center' />
       <Routes>
         <Route path='home' element="<h1>this is home</h1> " />
         <Route path='home2' element={<h1>this is second home page</h1>} />

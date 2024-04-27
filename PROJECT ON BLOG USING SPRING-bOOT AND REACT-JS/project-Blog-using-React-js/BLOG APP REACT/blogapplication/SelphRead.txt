@@ -44,3 +44,14 @@ session-6 Responsive Navbar using React JS  | Blogging Application
 -------------
 1)apply the reactstrap to create the navbar 
 2)
+-------------------------------------------------------------------------
+session-9 Connecting React App with Spring boot sending signup user data to backend for signup 
+1) we are using the axios for the server call (like-> spring boot calling)
+-------to install the axios we need to do following steps 
+    step-1: write -> npm install axios
+    ste-2: 
+2) we are using the react-toastify for display the beactify notification after login or signup
+ for that 
+ ------to install the react-tostify we need to follow the below code
+ step-1: npm install --save react-toastify
+ 
